@@ -23,7 +23,7 @@ const Form = () => {
   const [loginUser, setLoginUser] = useState(null);
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  console.log(loginUser)
+  // console.log(loginUser)
   const initialValues = {
     firstName: loginUser?.firstName || "",
     lastName: loginUser?.lastName || "",
@@ -56,11 +56,12 @@ const Form = () => {
         }
       );
   
-      console.log(values);
-      console.log(response.data);
+      // console.log(values);
+      // console.log(response.data);
       actions.resetForm({
         values: initialValues,
       });
+      window.location.reload();
     } catch (error) {
       console.error("Error updating user", error);
     }

@@ -7,18 +7,20 @@ import { Outlet } from "react-router-dom";
 export const ToggledContext = createContext(null);
 
 function App() {
-  const user = localStorage.getItem('token');
-  const [theme, colorMode] = useMode();
-  const [toggled, setToggled] = useState(false);
+  const user = localStorage.getItem('token'); // Check if user is logged in
+  const [theme, colorMode] = useMode(); // Custom theme logic
+  const [toggled, setToggled] = useState(false); // Toggled state for side bar
   const values = { toggled, setToggled };
-  
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ToggledContext.Provider value={values}>
           <Box sx={{ display: "flex", height: "100vh", maxWidth: "100%" }}>
-            {user &&  <SideBar />}
+            {/* Conditionally render SideBar if user is logged in */}
+            {user && <SideBar />}
+            
             <Box
               sx={{
                 flexGrow: 1,
@@ -28,9 +30,11 @@ function App() {
                 maxWidth: "100%",
               }}
             >
-              { user && <Navbar />}
+              {/* Conditionally render Navbar if user is logged in */}
+              {user && <Navbar />}
 
               <Box sx={{ overflowY: "auto", flex: 1, maxWidth: "100%" }}>
+                {/* Render the Outlet for child routes */}
                 <Outlet />
               </Box>
             </Box>

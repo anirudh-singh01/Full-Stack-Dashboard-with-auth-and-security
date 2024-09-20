@@ -12,6 +12,7 @@ const Signup = () => {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -21,11 +22,11 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when form is submitted
     try {
       const url = "http://localhost:8080/api/users";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
-    //   console.log(res.message);
     } catch (error) {
       if (
         error.response &&
@@ -35,6 +36,7 @@ const Signup = () => {
         setError(error.response.data.message);
       }
     }
+    setLoading(false); // Set loading to false after the request completes
   };
 
   const togglePassword = () => {
@@ -45,15 +47,10 @@ const Signup = () => {
     <div className={styles.signup_container}>
       <div className={styles.signup_form_container}>
         <div className={styles.left}>
-          {/* Video background */}
           <video className={styles.videoBackground} autoPlay muted loop>
-            <source
-              src="/video.mp4" // Corrected the path for video
-              type="video/mp4"
-            />
+            <source src="/video.mp4" type="video/mp4" />
             Your browser does not support HTML5 video.
           </video>
-          {/* Text and button placed on top of the video */}
           <div className={styles.overlay}>
             <h1>Welcome Back</h1>
             <Link to="/login">
@@ -112,8 +109,10 @@ const Signup = () => {
               </button>
             </div>
             {error && <div className={styles.error_msg}>{error}</div>}
-            <button type="submit" className={styles.green_btn}>
-              Sign Up
+            {/* Show loading text or spinner */}
+            {loading && <div className={styles.loading}>Loading...</div>}
+            <button type="submit" className={styles.green_btn} disabled={loading}>
+              {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
         </div>

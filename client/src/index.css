@@ -28,3 +28,21 @@ body,
 ::-webkit-scrollbar-track:hover {
   background: #555;
 }
+
+@media screen and (max-width:1268px) {
+  
+  .css-yqfqdv{
+    grid-auto-rows: auto !important;
+    gap: 3rem  !important;
+
+  }
+  
+}
+
+@media screen and (min-width:1268px) and  (max-width:2000px) {
+  
+  .css-5muqb2{
+    grid-auto-rows: auto !important;
+    gap: 1rem  !important;
+
+  }}

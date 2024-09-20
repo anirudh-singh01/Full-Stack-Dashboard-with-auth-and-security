@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 const Login = () => {
     const [data, setData] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);  // Loading state
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = ({ currentTarget: input }) => {
@@ -14,6 +15,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);  // Set loading to true when form is submitted
         try {
             const url = "http://localhost:8080/api/auth";
             const { data: res } = await axios.post(url, data);
@@ -28,6 +30,7 @@ const Login = () => {
                 setError(error.response.data.message);
             }
         }
+        setLoading(false);  // Set loading to false after the request completes
     };
 
     const togglePasswordVisibility = () => {
@@ -68,8 +71,10 @@ const Login = () => {
                             </button>
                         </div>
                         {error && <div className={styles.error_msg}>{error}</div>}
-                        <button type="submit" className={styles.green_btn}>
-                            Sign In
+                        {/* Show loading text or spinner */}
+                        {loading && <div className={styles.loading}>Loading...</div>}
+                        <button type="submit" className={styles.green_btn} disabled={loading}>
+                            {loading ? "Signing In..." : "Sign In"}
                         </button>
                     </form>
                 </div>
@@ -93,7 +98,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-

@@ -1,3 +1,4 @@
+/* Container for the entire login component */
 .login_container {
     width: 100%;
     min-height: 100vh;
@@ -5,17 +6,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px; /* Add padding for mobile */
 }
 
+/* Main form container */
 .login_form_container {
-    width: 900px;
-    height: 500px;
+    width: 90%; /* Reduce width for smaller screens */
+    max-width: 900px;
+    height: auto; /* Allow height to adjust based on content */
     display: flex;
+    flex-direction: column; /* Stack columns on smaller screens */
     border-radius: 10px;
     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
         0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
 
+/* Left section styling */
 .left {
     flex: 2;
     display: flex;
@@ -25,8 +31,10 @@
     background-color: white;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    padding: 20px; /* Add padding for better spacing */
 }
 
+/* Form styling */
 .form_container {
     display: flex;
     flex-direction: column;
@@ -34,17 +42,18 @@
 }
 
 .login_header {
-    font-size: 40px;
+    font-size: 40px; /* Reduce font size for smaller screens */
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-	color: black;
+    color: black;
 }
 
 .input {
     outline: none;
     border: none;
-    width: 370px;
+    width: 100%; /* Make input fields take up less space */
+    max-width: 370px;
     padding: 15px;
     border-radius: 10px;
     background-color: #edf5f3;
@@ -52,10 +61,12 @@
     font-size: 14px;
 }
 
+/* Password container to handle show/hide button */
 .password_container {
     display: flex;
     position: relative;
-    width: 370px;
+    width: 100%;
+    max-width: 370px;
 }
 
 .toggle_password_btn {
@@ -70,7 +81,8 @@
 }
 
 .error_msg {
-    width: 370px;
+    width: 90%;
+    max-width: 370px;
     padding: 15px;
     margin: 5px 0;
     font-size: 14px;
@@ -80,6 +92,7 @@
     text-align: center;
 }
 
+/* Right section styling */
 .right {
     flex: 1;
     display: flex;
@@ -91,6 +104,7 @@
     border-bottom-right-radius: 10px;
     position: relative;
     overflow: hidden;
+    padding: 20px; /* Add padding for better spacing */
 }
 
 .video_bg {
@@ -107,15 +121,17 @@
     position: relative;
     z-index: 2;
     color: white;
+    text-align: center;
 }
 
 .signup_header {
-    font-size: 40px;
+    font-size: 32px; /* Adjust font size for responsiveness */
     color: white;
     margin-bottom: 20px;
     text-align: center;
 }
 
+/* Button styling */
 .white_btn,
 .green_btn {
     border: none;
@@ -140,5 +156,50 @@
     z-index: 2;
 }
 
+.loading {
+    font-size: 14px;
+    color: #3bb19b;
+    margin-bottom: 10px;
+}
 
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+    .login_form_container {
+        flex-direction: row; /* Switch back to row layout for larger screens */
+        height: 500px; /* Fixed height for larger screens */
+    }
 
+    .left {
+        padding: 40px; /* Add more padding for larger screens */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack the left and right sections vertically on smaller screens */
+    .login_form_container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        border-radius: 10px; /* Adjust border-radius for stacked layout */
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .video_bg {
+        height: 300px; /* Adjust video height for smaller screens */
+    }
+
+    .signup_header {
+        font-size: 24px; /* Adjust font size */
+    }
+
+    .white_btn,
+    .green_btn {
+        width: 100%;
+        max-width: 300px; /* Adjust button width */
+    }
+}

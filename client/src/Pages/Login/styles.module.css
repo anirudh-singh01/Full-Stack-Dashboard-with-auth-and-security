@@ -6,16 +6,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px; /* Add padding for mobile */
+    padding: 20px;
 }
 
 /* Main form container */
 .login_form_container {
-    width: 90%; /* Reduce width for smaller screens */
+    width: 90%;
     max-width: 900px;
-    height: auto; /* Allow height to adjust based on content */
+    height: auto;
     display: flex;
-    flex-direction: column; /* Stack columns on smaller screens */
+    flex-direction: column;
     border-radius: 10px;
     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
         0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
@@ -31,7 +31,7 @@
     background-color: white;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding: 20px; /* Add padding for better spacing */
+    padding: 20px;
 }
 
 /* Form styling */
@@ -42,7 +42,7 @@
 }
 
 .login_header {
-    font-size: 40px; /* Reduce font size for smaller screens */
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -52,7 +52,7 @@
 .input {
     outline: none;
     border: none;
-    width: 100%; /* Make input fields take up less space */
+    width: 100%;
     max-width: 370px;
     padding: 15px;
     border-radius: 10px;
@@ -104,7 +104,7 @@
     border-bottom-right-radius: 10px;
     position: relative;
     overflow: hidden;
-    padding: 20px; /* Add padding for better spacing */
+    padding: 20px;
 }
 
 .video_bg {
@@ -125,7 +125,7 @@
 }
 
 .signup_header {
-    font-size: 40px; /* Adjust font size for responsiveness */
+    font-size: 40px;
     color: white;
     margin-bottom: 20px;
     text-align: center;
@@ -165,17 +165,16 @@
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
     .login_form_container {
-        flex-direction: row; /* Switch back to row layout for larger screens */
-        height: 500px; /* Fixed height for larger screens */
+        flex-direction: row;
+        height: 500px;
     }
 
     .left {
-        padding: 40px; /* Add more padding for larger screens */
+        padding: 40px;
     }
 }
 
 @media (max-width: 768px) {
-    /* Stack the left and right sections vertically on smaller screens */
     .login_form_container {
         flex-direction: column;
         height: auto;
@@ -184,22 +183,20 @@
     .left,
     .right {
         width: 100%;
-        border-radius: 10px; /* Adjust border-radius for stacked layout */
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 0;
+        border-radius: 10px;
     }
 
     .video_bg {
-        height: 300px; /* Adjust video height for smaller screens */
+        height: 300px;
     }
 
     .signup_header {
-        font-size: 24px; /* Adjust font size */
+        font-size: 24px;
     }
 
     .white_btn,
     .green_btn {
         width: 100%;
-        max-width: 300px; /* Adjust button width */
+        max-width: 300px;
     }
 }

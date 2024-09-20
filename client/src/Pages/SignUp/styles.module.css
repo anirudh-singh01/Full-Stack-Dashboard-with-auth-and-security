@@ -1,213 +1,219 @@
-/* Container for the entire signup component */
 .signup_container {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px; /* Add padding for mobile */
-}
-
-/* Main form container */
-.signup_form_container {
-    width: 90%; /* Reduce width for smaller screens */
-    max-width: 900px;
-    height: auto; /* Allow height to adjust based on content */
-    display: flex;
-    flex-direction: column; /* Stack columns on smaller screens */
-    border-radius: 10px;
-    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
-        0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
-}
-
-/* Left section styling */
-.left {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #3bb19b;
-    padding: 20px; /* Add padding for smaller screens */
-}
-
-/* Video background styling */
-.videoBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
-/* Overlay content over the video */
-.overlay {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center; /* Center text in the overlay */
-}
-
-.overlay h1 {
-    margin: 0;
-    color: white;
-    font-size: 28px; /* Reduce font size for smaller screens */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Button styling */
-.white_btn {
-    border: none;
-    outline: none;
-    padding: 12px 0;
-    background-color: white;
-    border-radius: 20px;
-    width: 180px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-/* Right section styling */
-.right {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    padding: 20px; /* Add padding for better spacing on smaller screens */
-}
-
-/* Form styling */
-.form_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form_container h1 {
-    font-size: 40px; /* Reduce font size for smaller screens */
-    margin-top: 0;
-}
-
-/* Input field styling */
-.input {
-    outline: none;
-    border: none;
-    width: 100%; /* Adjust width for smaller screens */
-    max-width: 370px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #edf5f3;
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-/* Password container to handle show/hide button */
-.password_container {
-    position: relative;
-    width: 100%; /* Adjust width for smaller screens */
-    max-width: 370px;
-}
-
-.toggle_password_btn {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #3bb19b;
-    font-size: 14px;
-}
-
-/* Error message styling */
-.error_msg {
-    width: 90%;
-    max-width: 370px;
-    padding: 15px;
-    margin: 5px 0;
-    font-size: 14px;
-    background-color: #f34646;
-    color: white;
-    border-radius: 5px;
-    text-align: center;
-}
-
-/* Button for sign up */
-.green_btn {
-    border: none;
-    outline: none;
-    padding: 12px 0;
-    background-color: #3bb19b;
-    color: white;
-    border-radius: 20px;
-    width: 180px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-/* Loading state styling */
-.loading {
-    font-size: 14px;
-    color: #3bb19b;
-    margin-bottom: 10px;
-}
-
-/* MEDIA QUERIES */
-@media (min-width: 768px) {
-    .signup_form_container {
-        flex-direction: row; /* Switch back to row layout for larger screens */
-        height: 500px; /* Fixed height for larger screens */
-    }
-
-    .left {
-        padding: 40px; /* Add more padding for larger screens */
-    }
-
-    .form_container h1 {
-        font-size: 40px; /* Larger font size on bigger screens */
-    }
-
-    .overlay h1 {
-        font-size: 35px; /* Larger font size for welcome message */
-    }
-}
-
-@media (max-width: 768px) {
-    /* Stack the left and right sections vertically on smaller screens */
-    .signup_form_container {
-        flex-direction: column-reverse;
-        height: auto;
-    }
-
-    .left,
-    .right {
-        width: 100%;
-        border-radius: 10px; /* Adjust border-radius for stacked layout */
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    .videoBackground {
-        height: 100%; /* Adjust video height for smaller screens */
-    }
-
-    .white_btn,
-    .green_btn {
-        width: 100%;
-        max-width: 300px; /* Adjust button width */
-    }
-}
+	width: 100%;
+	min-height: 100vh;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+  }
+  
+  .signup_form_container {
+	width: 90%;
+	max-width: 900px;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  }
+  
+  .left {
+	flex: 1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #3bb19b;
+	padding: 20px;
+  }
+  
+  .videoBackground {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+  }
+  
+  .overlay {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+  }
+  
+  .overlay h1 {
+	margin: 0;
+	color: white;
+	font-size: 28px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .white_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: white;
+	border-radius: 20px;
+	width: 180px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-top: 20px;
+  }
+  
+  .right {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	padding: 20px;
+  }
+  
+  .form_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .form_container h1 {
+	font-size: 40px;
+	margin-top: 0;
+  }
+  
+  .input {
+	outline: none;
+	border: none;
+	width: 100%;
+	max-width: 370px;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: #edf5f3;
+	margin: 5px 0;
+	font-size: 14px;
+  }
+  
+  .password_container {
+	position: relative;
+	width: 100%;
+	max-width: 370px;
+  }
+  
+  .toggle_password_btn {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	border: none;
+	background: none;
+	cursor: pointer;
+	color: #3bb19b;
+	font-size: 14px;
+  }
+  
+  .error_msg {
+	width: 90%;
+	max-width: 370px;
+	padding: 15px;
+	margin: 5px 0;
+	font-size: 14px;
+	background-color: #f34646;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+  }
+  
+  .green_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: #3bb19b;
+	color: white;
+	border-radius: 20px;
+	width: 180px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin: 10px;
+  }
+  
+  .loading {
+	font-size: 14px;
+	color: #3bb19b;
+	margin-bottom: 10px;
+  }
+  
+  @media (min-width: 768px) {
+	.signup_form_container {
+	  flex-direction: row;
+	  height: 500px;
+	}
+  
+	.left {
+	  padding: 40px;
+	}
+  
+	.form_container h1 {
+	  font-size: 40px;
+	}
+  
+	.overlay h1 {
+	  font-size: 35px;
+	}
+  }
+  
+  @media (max-width: 768px) {
+	.signup_form_container {
+	  flex-direction: column-reverse;
+	  height: auto;
+	}
+  
+	.left,
+	.right {
+	  width: 100%;
+	  border-radius: 10px;
+	  border-bottom-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+  
+	.videoBackground {
+	  height: 100%;
+	}
+  
+	.white_btn,
+	.green_btn {
+	  width: 100%;
+	  max-width: 300px;
+	}
+  }
+  
+  /* For very small screens like old smartphones */
+  @media (max-width: 400px) {
+	.signup_form_container {
+	  padding: 15px;
+	}
+  
+	.form_container h1 {
+	  font-size: 28px;
+	}
+  
+	.input {
+	  padding: 12px;
+	}
+  
+	.white_btn,
+	.green_btn {
+	  width: 100%;
+	  max-width: 250px;
+	}
+  }
+  

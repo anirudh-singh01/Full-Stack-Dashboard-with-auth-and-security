@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
@@ -22,20 +22,33 @@ const Login = () => {
             localStorage.setItem("token", JSON.stringify(res)); // Convert to JSON string
             window.location = "/";
         } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
+            if (error.response) {
+                if (
+                    error.response.status >= 400 &&
+                    error.response.status <= 500
+                ) {
+                    setError(error.response.data.message);
+                }
+            } else if (error.request) {
+                setError("Network error. Please try again later.");
+            } else {
+                setError("An unexpected error occurred.");
             }
+        } finally {
+            setLoading(false);  // Set loading to false after the request completes
         }
-        setLoading(false);  // Set loading to false after the request completes
     };
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    useEffect(() => {
+        let isMounted = true;  // flag to prevent setting state after unmounting
+        return () => {
+            isMounted = false;
+        };
+    }, []);
 
     return (
         <div className={styles.login_container}>
@@ -51,6 +64,7 @@ const Login = () => {
                             value={data.email}
                             required
                             className={styles.input}
+                            aria-label="Email address"
                         />
                         <div className={styles.password_container}>
                             <input
@@ -61,25 +75,30 @@ const Login = () => {
                                 value={data.password}
                                 required
                                 className={styles.input}
+                                aria-label="Password"
                             />
                             <button
                                 type="button"
                                 onClick={togglePasswordVisibility}
                                 className={styles.toggle_password_btn}
+                                aria-label={showPassword ? "Hide password" : "Show password"}
                             >
                                 {showPassword ? "Hide" : "Show"}
                             </button>
                         </div>
                         {error && <div className={styles.error_msg}>{error}</div>}
-                        {/* Show loading text or spinner */}
                         {loading && <div className={styles.loading}>Loading...</div>}
-                        <button type="submit" className={styles.green_btn} disabled={loading}>
+                        <button
+                            type="submit"
+                            className={styles.green_btn}
+                            disabled={loading || !data.email || !data.password}
+                        >
                             {loading ? "Signing In..." : "Sign In"}
                         </button>
                     </form>
                 </div>
                 <div className={styles.right}>
-                    <video autoPlay loop muted className={styles.video_bg}>
+                    <video autoPlay loop muted playsInline className={styles.video_bg}>
                         <source src="/video.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

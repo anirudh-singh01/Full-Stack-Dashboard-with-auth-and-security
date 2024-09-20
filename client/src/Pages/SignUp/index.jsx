@@ -12,7 +12,7 @@ const Signup = () => {
   });
 
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when form is submitted
+    setLoading(true);
     try {
       const url = "http://localhost:8080/api/users";
       const { data: res } = await axios.post(url, data);
@@ -35,8 +35,9 @@ const Signup = () => {
       ) {
         setError(error.response.data.message);
       }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false); // Set loading to false after the request completes
   };
 
   const togglePassword = () => {
@@ -47,7 +48,13 @@ const Signup = () => {
     <div className={styles.signup_container}>
       <div className={styles.signup_form_container}>
         <div className={styles.left}>
-          <video className={styles.videoBackground} autoPlay muted loop>
+          <video
+            className={styles.videoBackground}
+            autoPlay
+            muted
+            loop
+            aria-hidden="true"
+          >
             <source src="/video.mp4" type="video/mp4" />
             Your browser does not support HTML5 video.
           </video>
@@ -71,6 +78,7 @@ const Signup = () => {
               value={data.firstName}
               required
               className={styles.input}
+              aria-label="First Name"
             />
             <input
               type="text"
@@ -80,6 +88,7 @@ const Signup = () => {
               value={data.lastName}
               required
               className={styles.input}
+              aria-label="Last Name"
             />
             <input
               type="email"
@@ -89,6 +98,7 @@ const Signup = () => {
               value={data.email}
               required
               className={styles.input}
+              aria-label="Email"
             />
             <div className={styles.password_container}>
               <input
@@ -99,19 +109,24 @@ const Signup = () => {
                 value={data.password}
                 required
                 className={styles.input}
+                aria-label="Password"
               />
               <button
                 type="button"
                 onClick={togglePassword}
                 className={styles.toggle_password_btn}
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
             {error && <div className={styles.error_msg}>{error}</div>}
-            {/* Show loading text or spinner */}
             {loading && <div className={styles.loading}>Loading...</div>}
-            <button type="submit" className={styles.green_btn} disabled={loading}>
+            <button
+              type="submit"
+              className={styles.green_btn}
+              disabled={loading}
+            >
               {loading ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
